@@ -6,6 +6,11 @@
 ![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)
 [![ESX](https://img.shields.io/badge/ESX-Legacy-green.svg)](https://github.com/esx-framework/esx-legacy)
 
+
+## DEMO VIDEO
+
+[![Demo](https://img.shields.io/badge/Demo-Watch%20Video-red.svg)](https://streamable.com/xj7grw)
+
 A feature-rich announcement system with beautiful UI animations, sound integration, queue management, and extensive customization options. Perfect for server announcements, events, notifications, and admin communications.
 
 ## 🌟 Features
