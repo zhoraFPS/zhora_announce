@@ -9,7 +9,7 @@
 
 ## DEMO VIDEO
 
-[![Demo](https://img.shields.io/badge/Demo-Watch%20Video-red.svg)]([https://streamable.com/zo3p1m])
+[![Demo](https://img.shields.io/badge/Demo-Watch%20Video-red.svg)](https://streamable.com/zo3p1m)
 
 A feature-rich announcement system with beautiful UI animations, sound integration, queue management, and extensive customization options. Perfect for server announcements, events, notifications, and admin communications.
 
