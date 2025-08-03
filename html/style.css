@@ -1,0 +1,175 @@
+/* Basic resets and font setup */
+body, html {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #e1e1e3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+}
+
+/* Wrapper for positioning */
+#announcement-wrapper {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2000;
+    pointer-events: none;
+}
+
+/* Keyframes for pulse animation (subtle shadow pulsation) */
+@keyframes pulseShadowAnimation {
+    0% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0,0,0,0.22);
+    }
+    50% {
+        /* More pronounced shadow for the effect */
+        box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), 0 10px 25px rgba(0,0,0,0.4);
+    }
+    100% {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0,0,0,0.22);
+    }
+}
+
+/* The actual announcement container */
+#announcement-container {
+    background-color: rgba(35, 35, 40, 0.92);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-radius: 13px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0,0,0,0.22);
+    width: 380px;
+    max-width: calc(100% - 40px);
+    display: flex;
+    align-items: flex-start;
+    padding: 14px;
+    box-sizing: border-box;
+    pointer-events: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    /* Default appearance (hidden) */
+    opacity: 0;
+    transform: translateY(-80px) scale(0.95);
+
+    /* General transitions for showing and as base for hiding */
+    transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes pulseScaleAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(0) scale(1.03);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+#announcement-container.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: pulseShadowAnimation 2.5s infinite ease-in-out;
+}
+
+/* Special class for smooth fade out effect */
+#announcement-container.exiting {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.9);
+    animation: none;
+    /* Custom, slower transition for fading out */
+    transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Final hidden class (after animation is complete) */
+#announcement-container.hidden {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.95);
+    animation: none;
+}
+
+/* Icon area animations */
+@keyframes iconSmoothJump {
+    0% {
+        transform: translateY(10px) scale(0.7);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(-12px) scale(1.15);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(3px) scale(0.95);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animation for the icon when announcement appears */
+#announcement-container.visible .announcement-icon-area i {
+    animation: iconSmoothJump 0.6s cubic-bezier(0.25, 0.1, 0.3, 1.5) forwards;
+    transform-origin: center bottom;
+}
+
+.announcement-icon-area {
+    margin-right: 12px;
+    font-size: 1.3em;
+    min-width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+}
+
+/* Content area */
+.announcement-content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.announcement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+#announcement-title {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.announcement-body {
+    padding: 0;
+}
+
+#announcement-text {
+    margin: 0;
+    font-size: 0.9em;
+    color: #E0E0E5;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+#announcement-container .announcement-icon-area i {
+    color: #8e8e93; /* Default gray, overridden by JS */
+}
