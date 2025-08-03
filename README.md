@@ -666,7 +666,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 - **Issues:** Create an issue on GitHub
-- **Discord:** Join our community server
+- **Discord:** zhorafps
 - **Documentation:** Check this README and code comments
 
 ---
